@@ -1,0 +1,33 @@
+.rating{
+    text-align: right;
+    padding-top: 0cm;
+}
+
+.alignleft {
+	float: right;
+}
+
+table {
+  width: 80%;
+  border: 1px solid black;
+}
+
+
+
+.check {
+   
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+   
+    display:flex;
+
+ 
+    padding-bottom: 20px;
+}
+.container {
+   
+    display:flex;
+}
+
+.flex{
+    padding-left: 30px;
+}
