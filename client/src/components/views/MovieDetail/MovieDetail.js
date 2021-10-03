@@ -15,6 +15,8 @@ import MainImage from '../../views/LandingPage/Sections/MainImage';
 import MovieInfo from './Sections/MovieInfo';
 import Favorite from './Sections/Favorite';
 import Footer from '../Footer/Footer';
+import RecommendedMovies from './Sections/Recommended';
+import SimilarMovies from './Sections/Similar';
 
 function MovieDetailPage(props) {
 
@@ -180,7 +182,22 @@ function MovieDetailPage(props) {
                   >
                    WATCH THE CLIP
                   </Button>
+                  
+                            <div><RecommendedMovies type="Recommended Movies" urlParams={movieId} /></div>
+                            :
+                            null
+                        
+                        {/* <br /> */}
+                        {/* Similar Movies */}
+                        
+                            <div><SimilarMovies type="Similar Movies" urlParams={movieId} /></div>
+                            
+                            null
+                        
                  <Footer />
+
+
+             
         </div>//MAIN DIV??
     )
 }
