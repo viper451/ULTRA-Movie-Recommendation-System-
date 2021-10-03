@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 import { CSSTransition } from 'react-transition-group';
+import { MDBBadge } from 'mdb-react-ui-kit';
 import { Card, Avatar, Col, Row, Typography } from 'antd';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -11,6 +12,7 @@ const { Meta } = Card;
 function UsersPage() {
     const user = useSelector(state => state.user)
  //   console.log(user)
+ 
     let variable = { userFrom: localStorage.getItem('userId') }
     const { t } = useTranslation();
     const [Comments,setComments]=useState([])
@@ -21,7 +23,7 @@ function UsersPage() {
     const [UserList, setUserList] = useState([])
     const [Loading, setLoading] = useState(true)
     const history = useHistory();
-
+ 
     useEffect(() => {
         fetchUserProfile()
         fetchFavoredMovie()
@@ -35,11 +37,11 @@ function UsersPage() {
 
         axios.post('/api/users/numUser',variable )
         .then(response => {
-             console.log('User',response.data)
+             console.log('User',response.data.users)
             if (response.data.success) {
                 // console.log('response.data.comments', response.data.comments)
-                setUser(response.data)
-                console.log(setUser)
+                setUser(response.data.users)
+              
             } else {
                 alert('Failed to get User Info')
             }
@@ -47,11 +49,12 @@ function UsersPage() {
         
     }
 
+
      const fetchFavoredMovie = () => {
         axios.post('/api/favorite/numFavoredMovie',variable )
             .then(response => {
                 if (response.data.success) {
-                     console.log('favourites',response.data)
+                      console.log('favourites',response.data.favorites)
                     setFavorite(response.data.favorites)
                     // console.log(setFavorite)
                     setLoading(false)
@@ -65,7 +68,7 @@ function UsersPage() {
 
         axios.post('/api/comment/numComments',variable )
         .then(response => {
-             console.log('comments',response.data)
+              console.log('comments',response.data.comments)
             if (response.data.success) {
                 // console.log('response.data.comments', response.data.comments)
                 setComments(response.data.comments)
@@ -81,11 +84,12 @@ function UsersPage() {
     const fetchLikes=()=>{
         axios.post('/api/like/numLikes',variable )
         .then(response => {
-             console.log('getLikes', response.data)
+             console.log('getLikes', response.data.likes)
 
             if (response.data.success) {
                 // n of comment likes 
-                setLikes(response.data.likes.length)
+                // setLikes(response.data.likes.length)
+                setLikes(response.data.likes)
               
 
                 
@@ -100,12 +104,14 @@ function UsersPage() {
     const fetchDislikes=()=>{
         axios.post('/api/like/numDislikes',variable )
         .then(response => {
-            console.log('getDisLikes', response.data)
+            console.log('getDisLikes', response.data.dislikes)
+     
 
             if (response.data.success) {
            
                 // n of comment likes 
-                setDisLikes(response.data.likes)
+                setDisLikes(response.data.dislikes)
+             
                 console.log(setDisLikes)
 
               
@@ -118,7 +124,7 @@ function UsersPage() {
 
 
 
-    // const renderCards = UserList.map((user, index) => {
+    // const renderCards = Users.map((user) => {
     //     return <Col lg={6} md={8} xs={24} key={user._id}>
     //         <Card
     //             hoverable
@@ -127,11 +133,17 @@ function UsersPage() {
     //         >
     //             <Meta title={user.name} />
     //             <br />
-    //             <span>{user.firstName} {user.lastName}</span>
+    //             <span>{user[0].email} </span>
     //         </Card>
     //     </Col>
     // })
     console.log({Users}+" ewf")
+
+    // const UserProfile=Usersmap((user, index)=>{
+    //   <div>{user.name}</div>
+
+    // });
+
      return (
         <CSSTransition
         in={true}
@@ -139,26 +151,38 @@ function UsersPage() {
         timeout={600}
         classNames='fade'
         unmountOnExit>
+            
         <div>
+           {/* {users.map((article,key)=>(
+                   <div>{article.email} </div>
+           ))} */}
+
         {Users && (
                 <div>
+              
                     <div className='container rounded p-4 mt-4 text-white'>
                         <div className='d-flex flex-column w-50 justify-content-between mr-4'>
                             <div className='d-flex m-1'>
                                 <h4 className='w-20 m-0'>
                                     <span className='badge badge-primary mr-3'>
-                                        Name
+                                    <MDBBadge pill className=' text-light' color='primary'>
+                                        Name : </MDBBadge>
                                     </span>
                                 </h4>
-                                {/* <h3 className='m-0'>{Users[0].name}</h3> */}
+                                
+                                <h3 className='m-0'>
+                                    
+                                    &nbsp; &nbsp;&nbsp; &nbsp; <font color="white"> </font></h3>
                             </div>
                             <div className='d-flex m-1'>
                                 <h4 className='w-20 m-0'>
                                     <span className='badge badge-primary mr-3'>
-                                        @
+                                    <MDBBadge pill className=' text-light' color='primary'>
+                                        @ : </MDBBadge>
+                                     &nbsp;  &nbsp;  &nbsp;  
                                     </span>
                                 </h4>
-                                {/* <h3 className='m-0'>{user.name}</h3> */}
+                                <h3 className='m-0'></h3>
                             </div>
 
                             <br />
@@ -169,15 +193,20 @@ function UsersPage() {
                             <div className='d-flex m-1'>
                                 <h5 className='w-20 m-0'>
                                     <span className='badge badge-warning p-2 mr-3'>
-                                        Joined
+                                 <h3>   <MDBBadge pill className=' text-dark' color='warning'>
+                                        Joined :</MDBBadge></h3>
+                                   
                                     </span>
                                 </h5>
                                 <h5>
+                                    {/* <h3>
                                     <span className='badge badge-secondary p-2 mr-3'>
+           &nbsp;   &nbsp;   &nbsp;    &nbsp;   &nbsp;
                                         {new Date(
-                                            user.DateCreated
+                                            Users[0].DateCreated
                                         ).toLocaleString()}
                                     </span>
+                                    </h3> */}
                                 </h5>
                             </div>
                         </div>

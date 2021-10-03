@@ -99,7 +99,8 @@ function RegisterPage(props) {
             <h2><font color="white">Register</font></h2>
             <Form style={{ minWidth: '375px' }} {...formItemLayout} onSubmit={handleSubmit} >
 
-              <Form.Item required background="white" label="Name">
+              <Form.Item required background="white" label="">
+                <p><font color="white">NAME</font></p>
                 <Input
                   id="name"
                   placeholder="Enter your name"
@@ -116,7 +117,8 @@ function RegisterPage(props) {
                 )}
               </Form.Item>
 
-              <Form.Item required label="Last Name">
+              <Form.Item required label="">
+              <p><font color="white">LAST NAME</font></p>
                 <Input
                   id="lastName"
                   placeholder="Enter your Last Name"
@@ -133,7 +135,9 @@ function RegisterPage(props) {
                 )}
               </Form.Item>
 
-              <Form.Item required label="Email" hasFeedback validateStatus={errors.email && touched.email ? "error" : 'success'}>
+            
+              <Form.Item required label="" hasFeedback validateStatus={errors.email && touched.email ? "error" : 'success'}>
+              <p><font color="white">E-MAIL</font></p>
                 <Input
                   id="email"
                   placeholder="Enter your Email"
@@ -149,8 +153,9 @@ function RegisterPage(props) {
                   <div className="input-feedback">{errors.email}</div>
                 )}
               </Form.Item>
-
-              <Form.Item required label="Password" hasFeedback validateStatus={errors.password && touched.password ? "error" : 'success'}>
+            
+              <Form.Item required label="" hasFeedback validateStatus={errors.password && touched.password ? "error" : 'success'}>
+               <p><font color="white">PASSWORD</font></p>
                 <Input
                   id="password"
                   placeholder="Enter your password"
@@ -167,7 +172,8 @@ function RegisterPage(props) {
                 )}
               </Form.Item>
 
-              <Form.Item required label="Confirm" hasFeedback>
+              <Form.Item required label="" hasFeedback>
+              <p><font color="white">CONFIRM</font></p>
                 <Input
                   id="confirmPassword"
                   placeholder="Enter your confirmPassword"

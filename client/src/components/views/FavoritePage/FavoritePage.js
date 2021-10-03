@@ -22,7 +22,7 @@ function FavoritePage(props) {
         axios.post('/api/favorite/getFavoredMovie', variable)
             .then(response => {
                 if (response.data.success) {
-                    // console.log(response.data.favorites)
+                    //  console.log(response.data)
                     setFavorites(response.data.favorites)
                     setLoading(false)
                 } else {
