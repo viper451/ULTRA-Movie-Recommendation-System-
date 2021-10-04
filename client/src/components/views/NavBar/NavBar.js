@@ -51,7 +51,7 @@ function NavBar() {
                             </button>
           </div>
         <div className="menu_rigth">
-          <RightMenu mode="horizontal" />
+          <RightMenu/>
         </div>
         <Button
           className="menu__mobile-button"
@@ -61,7 +61,7 @@ function NavBar() {
           <Icon type="align-right" />
         </Button>
         <Drawer
-          title="FOI 2021"
+          title="ULTRA 2021"
           placement="right"
           className="menu_drawer"
           closable={false}
