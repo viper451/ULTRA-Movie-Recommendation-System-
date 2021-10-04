@@ -87,24 +87,6 @@ const setGenres=movie.genres
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     
 
      </div>

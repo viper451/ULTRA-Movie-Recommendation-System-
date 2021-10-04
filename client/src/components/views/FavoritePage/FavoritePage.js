@@ -77,12 +77,12 @@ function FavoritePage(props) {
 
     return (
         <div style={{ width: '85%', margin: '3rem auto' }}>
-            <Title level={2} > My favorite movies </Title>
+            <Title level={2} > MY WATCHLIST </Title>
             <hr />
             {user.userData && !user.userData.isAuth ?
                 <div style={{ width: '100%', fontSize: '2rem', height: '500px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-                    <p>Log in first...</p>
-                    <a style={{ color: '#BD0A28' }} href="/login">Go to Login page</a>
+                    <p><font color="white">Log in first...</font></p>
+                    <a style={{ color: 'white' }} href="/login">Go to Login page</a>
                 </div>
                 :
                 !Loading &&

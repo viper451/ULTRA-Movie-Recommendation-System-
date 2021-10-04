@@ -6,6 +6,7 @@ import { MDBBadge } from 'mdb-react-ui-kit';
 import { Card, Avatar, Col, Row, Typography } from 'antd';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import GridCards from '../../commons/GridCards';
 const { Title } = Typography;
 const { Meta } = Card;
 
@@ -69,6 +70,7 @@ function UsersPage() {
         axios.post('/api/comment/numComments',variable )
         .then(response => {
               console.log('comments',response.data.comments)
+            
             if (response.data.success) {
                 // console.log('response.data.comments', response.data.comments)
                 setComments(response.data.comments)
@@ -137,13 +139,12 @@ function UsersPage() {
     //         </Card>
     //     </Col>
     // })
-    console.log({Users}+" ewf")
-
-    // const UserProfile=Usersmap((user, index)=>{
-    //   <div>{user.name}</div>
-
-    // });
-
+    
+    const ucomments=Comments.map((user, index)=>{
+ 
+      <div>{user[index]?.content}</div>
+    });
+ console.log(Comments[0]?.content)
      return (
         <CSSTransition
         in={true}
@@ -151,7 +152,7 @@ function UsersPage() {
         timeout={600}
         classNames='fade'
         unmountOnExit>
-            
+        
         <div>
            {/* {users.map((article,key)=>(
                    <div>{article.email} </div>
@@ -161,28 +162,31 @@ function UsersPage() {
                 <div>
               
                     <div className='container rounded p-4 mt-4 text-white'>
-                        <div className='d-flex flex-column w-50 justify-content-between mr-4'>
+                        <div className='d-flex flex-column w-30 justify-content-between mr-4'>
                             <div className='d-flex m-1'>
                                 <h4 className='w-20 m-0'>
                                     <span className='badge badge-primary mr-3'>
                                     <MDBBadge pill className=' text-light' color='primary'>
-                                        Name : </MDBBadge>
+                                        Name  </MDBBadge>
                                     </span>
                                 </h4>
                                 
                                 <h3 className='m-0'>
                                     
-                                    &nbsp; &nbsp;&nbsp; &nbsp; <font color="white"> </font></h3>
+                                <font color="white">:</font> &nbsp; &nbsp;&nbsp; &nbsp; <font color="white">{Users[0]?.name}</font></h3>
                             </div>
                             <div className='d-flex m-1'>
                                 <h4 className='w-20 m-0'>
                                     <span className='badge badge-primary mr-3'>
                                     <MDBBadge pill className=' text-light' color='primary'>
-                                        @ : </MDBBadge>
-                                     &nbsp;  &nbsp;  &nbsp;  
-                                    </span>
+                                        @  </MDBBadge>
+                                        &nbsp; &nbsp;
+                             
+                                       </span>
                                 </h4>
-                                <h3 className='m-0'></h3>
+                                <h3 className='m-0'>
+                                    
+                                <font color="white">:</font>  &nbsp; &nbsp;&nbsp; &nbsp; <font color="white">{Users[0]?.email}</font></h3>
                             </div>
 
                             <br />
@@ -199,36 +203,43 @@ function UsersPage() {
                                     </span>
                                 </h5>
                                 <h5>
-                                    {/* <h3>
+                                    <h3>
                                     <span className='badge badge-secondary p-2 mr-3'>
            &nbsp;   &nbsp;   &nbsp;    &nbsp;   &nbsp;
                                         {new Date(
-                                            Users[0].DateCreated
+                                            Users[0]?.DateCreated
                                         ).toLocaleString()}
                                     </span>
-                                    </h3> */}
+                                    </h3>
                                 </h5>
                             </div>
                         </div>
                     </div>
-                    {/* <div className='container bg-transparent d-flex flex-column align-items-center mt-4 p-0'>
-                        {reviews && reviews.length > 0 && (
+                    <div className='container bg-transparent d-flex flex-column align-items-center mt-4 p-0'>
+                        {Comments && Comments.length > 0 && (
                             <h2 className='text-warning d-flex align-content-center'>
-                                <span>Reviews Given</span>
+                                <span>YOUR REVIEWS</span>
 
                                 <span className='badge badge-pill badge-warning ml-3'>
-                                    {reviews.length}
+                                    {Comments.length}
+                                
                                 </span>
                             </h2>
                         )}
                         <br />
-                        <div className='w-100'>
+                        {/* <div className='w-100'>
                             {reviews &&
                                 reviews.map(function (rating, i) {
                                     return <Review review={rating} />;
                                 })}
-                        </div>
-                    </div> */}
+                        </div> */}
+                    </div>
+                    <div>
+                   {/* {Comments.map((user, index)=>{
+  
+  <div><font color="white">{user[index]?.content}</font></div>
+})}; */}
+                         </div>
                     {/* <div className='mt-5'>
                         {likedQuery && (
                             <MovieRow
@@ -245,6 +256,92 @@ function UsersPage() {
                                 movies={savedQuery}></MovieRow>
                         )}
                     </div> */}
+
+{/* COMMENTS GIVEN */}
+<div className='container bg-transparent d-flex flex-column align-items-center mt-4 p-0'>
+                        {Favorite && Favorite.length > 0 && (
+                            <h2 className='text-warning d-flex align-content-center'>
+                                <span>YOUR FAVORITES</span>
+
+                                <span className='badge badge-pill badge-warning ml-3'>
+                                    {Favorite.length}
+                                </span>
+                            </h2>
+                        )}
+                        <br />
+                        {/* <div className='w-100'>
+                            {reviews &&
+                                reviews.map(function (rating, i) {
+                                    return <Review review={rating} />;
+                                })}
+                        </div> */}
+                    </div>
+
+
+
+
+
+
+
+
+{/* LIKES GIVEN */}
+<div className='container bg-transparent d-flex flex-column align-items-center mt-4 p-0'>
+                        {Likes && Likes.length > 0 && (
+                            <h2 className='text-warning d-flex align-content-center'>
+                                <span>LIKES</span>
+
+                                <span className='badge badge-pill badge-warning ml-3'>
+                                    {Likes.length}
+                                </span>
+                            </h2>
+                        )}
+                        <br />
+                        {/* <div className='w-100'>
+                            {reviews &&
+                                reviews.map(function (rating, i) {
+                                    return <Review review={rating} />;
+                                })}
+                        </div> */}
+                    </div>
+
+
+
+
+
+
+
+
+
+
+{/* DISLIKES GIVEN */}
+
+                     <div className='container bg-transparent d-flex flex-column align-items-center mt-4 p-0'>
+                        {Dislikes && Dislikes.length > 0 && (
+                            <h2 className='text-warning d-flex align-content-center'>
+                                <span>DISLIKES</span>
+
+                                <span className='badge badge-pill badge-warning ml-3'>
+                                    {Dislikes.length}
+                                </span>
+                            </h2>
+                        )}
+                        <br />
+                        {/* <div className='w-100'>
+                            {reviews &&
+                                reviews.map(function (rating, i) {
+                                    return <Review review={rating} />;
+                                })}
+                        </div> */}
+                    </div>
+
+
+
+
+
+
+
+
+
                 </div>
              )}
         </div>

@@ -96,73 +96,7 @@ function Comments(props) {
                 
                 />
                 <br />
-                <div className='d-flex justify-content-between align-items-center m-1'>
-                    
-                    <div class='input-group ml-3 w-25'>
-                        <div class='input-group-prepend'>
-                            <button
-                                class='btn btn-dark-info'
-                                type='button'
-                                onClick={() => {
-                                    setReviewScore('0');
-                                }}>
-                                Score
-                            </button>
-                        </div>
-                        <select
-                            class={
-                                reviewScore == '0'
-                                    ? 'custom-select text-secondary'
-                                    : 'custom-select text-white'
-                            }
-                            id='scoreSelect'
-                            value={reviewScore}
-                            onChange={(e) => {
-                                setReviewScore(e.target.value);
-                            }}>
-                            <option
-                                value='0'
-                                selected
-                                className='text-secondary'>
-                                0
-                            </option>
-
-                            <option value='1' className='text-danger'>
-                                1
-                            </option>
-                            <option value='2' className='text-danger'>
-                                2
-                            </option>
-                            <option value='3' className='text-danger'>
-                                3
-                            </option>
-                            <option value='4' className='text-warning'>
-                                4
-                            </option>
-                            <option value='5' className='text-warning'>
-                                5
-                            </option>
-                            <option value='6' className='text-warning'>
-                                6
-                            </option>
-                            <option value='7' className='text-success'>
-                                7
-                            </option>
-                            <option value='8' className='text-success'>
-                                8
-                            </option>
-                            <option value='9' className='text-success'>
-                                9
-                            </option>
-                            <option value='10' className='text-success'>
-                                10
-                            </option>
-                        </select>
-                        <div class='input-group-append'>
-                            <span class='input-group-text text-info'>/ 10</span>
-                        </div>
-                    </div>
-                </div>
+         
                 <span  >
                 <Button   className='btn btn-outline-info' style={{ width: '100%', height: '52px' }} onClick={onSubmit}>SEND</Button>
                 {/* <button type="button" class="btn btn-outline-info">Info</button> */}
