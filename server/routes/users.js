@@ -32,6 +32,7 @@ router.post("/register", (req, res) => {
 router.post("/login", (req, res) => {
     User.findOne({ email: req.body.email }, (err, user) => {
         if (!user)
+            
             return res.json({
                 loginSuccess: false,
                 message: "Authentication failed, email not found"
@@ -75,12 +76,11 @@ router.get("/getUsers", auth, async (req, res) => {
 
 
 
-router.post("/numUser",auth, (req, res) => {
-    console.log(req.body)
-User.find({ '_id': req.body.userFrom })
+router.get("/:numUser", auth, (req, res) => {
+User.find({ '_id': req.params.numUser }).populate('content')
 .exec((err,users) => {
  if (err) return res.status(400).send(err);
- return res.status(200).json({ success: true,users })
+ return res.status(200).json({ success: true, users })
 })
 });
 

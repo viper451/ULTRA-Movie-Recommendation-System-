@@ -17,7 +17,8 @@ const commentSchema = mongoose.Schema({
         type: String
     },
     review:{
-        type:String
+        type: Number,
+        default: 0
     }
 
 },

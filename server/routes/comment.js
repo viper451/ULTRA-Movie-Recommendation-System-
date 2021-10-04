@@ -3,6 +3,7 @@ const router = express.Router();
 const { Comment } = require("../models/Comment");
 const { auth } = require("../middleware/auth");
 
+//saving the comments
 router.post("/saveComment", auth, (req, res) => {
     const emptyMessage="NEED TO TYPE SOMETHING "
     const comment = new Comment(req.body)
@@ -44,6 +45,9 @@ router.post("/numComments", (req, res) => {
             return res.status(200).json({ success: true,comments })
         })
 });
+
+
+
 
 
 module.exports = router;
