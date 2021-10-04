@@ -122,7 +122,7 @@ function UsersPage() {
             }
         })
     }
-// console.log(UserList)
+//  console.log(Users[0]?.name)
 
 
 
@@ -144,7 +144,7 @@ function UsersPage() {
  
       <div>{user[index]?.content}</div>
     });
- console.log(Comments[0]?.content)
+//  console.log(Comments[0]?.content)
      return (
         <CSSTransition
         in={true}

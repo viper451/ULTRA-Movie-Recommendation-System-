@@ -24,7 +24,7 @@ function RightMenu(props) {
       }
     });
   };
-  console.log(user)
+  // console.log(user)
   const userspush=()=>{
 history.push('/users')
 

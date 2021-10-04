@@ -74,13 +74,23 @@ router.get("/getUsers", auth, async (req, res) => {
 });
 
 
+//**Change the router path in axios**//
+
+// router.get("/:numUser", auth, (req, res) => {
+// User.find({ '_id': req.params.numUser }).populate('content')
+// .exec((err,users) => {
+//  if (err) return res.status(400).send(err);
+//  return res.status(200).json({ success: true, users })
+// })
+// });
 
 
-router.get("/:numUser", auth, (req, res) => {
-User.find({ '_id': req.params.numUser }).populate('content')
+router.post("/numUser",auth, (req, res) => {
+    console.log(req.body)
+User.find({ '_id': req.body.userFrom })
 .exec((err,users) => {
  if (err) return res.status(400).send(err);
- return res.status(200).json({ success: true, users })
+ return res.status(200).json({ success: true,users })
 })
 });
 
