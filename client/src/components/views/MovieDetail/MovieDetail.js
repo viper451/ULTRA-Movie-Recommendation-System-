@@ -17,6 +17,7 @@ import Favorite from './Sections/Favorite';
 import Footer from '../Footer/Footer';
 import RecommendedMovies from './Sections/Recommended';
 import SimilarMovies from './Sections/Similar';
+import MovieRating from './Sections/MovieRating'
 
 function MovieDetailPage(props) {
 
@@ -171,6 +172,11 @@ function MovieDetailPage(props) {
                
                 <Comments movieTitle={Movie.original_title} CommentLists={CommentLists} postId={movieId} refreshFunction={updateComment} />
 
+            </div>
+
+            <div>
+                    <h3 className="rating-white">Give ratings</h3>
+                   <MovieRating postId={movieId} UserData={localStorage.getItem('userId')}/>   
             </div>
 
             <Button

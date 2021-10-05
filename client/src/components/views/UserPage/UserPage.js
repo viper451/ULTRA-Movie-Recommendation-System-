@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 import { CSSTransition } from 'react-transition-group';
@@ -221,8 +221,19 @@ function UsersPage() {
                                 <span>YOUR REVIEWS</span>
 
                                 <span className='badge badge-pill badge-warning ml-3'>
-                                    {Comments.length}
-                                
+                                <br/>
+                                <Fragment>
+                                    {Comments.map((comment) => (
+                                        <div>
+                                            <div>Review: {comment.content}</div>
+                                            <div>Movie: {comment.postId}</div>
+                                            <br />
+                                        </div>
+                                        
+                                        
+                                    ))}
+
+                                </Fragment>
                                 </span>
                             </h2>
                         )}
