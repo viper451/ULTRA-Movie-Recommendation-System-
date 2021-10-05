@@ -9,7 +9,7 @@ function MovieInfo(props) {
 // console.log(movie.genres.length)
 const setGenres=movie.genres
 // console.log(setGenres)
-
+// console.log(props)
   return (
     // <Descriptions title="Movie details" bordered size='default'>
     //   <Descriptions.Item style={{ padding: '400px' }} label="Title">{movie.original_title}</Descriptions.Item>

@@ -26,6 +26,7 @@ function MovieDetailPage(props) {
     const [Casts, setCasts] = useState([])
     const [Directors, setDirectors] = useState([])
     const [video, setVideo] = useState();
+    const [Rating, setRating] = useState();
     const [CommentLists, setCommentLists] = useState([])
     const [LoadingForMovie, setLoadingForMovie] = useState(true)
     const [LoadingForCasts, setLoadingForCasts] = useState(true)
@@ -94,6 +95,10 @@ function MovieDetailPage(props) {
     const updateComment = (newComment) => {
         setCommentLists(CommentLists.concat(newComment))
     }
+    const updateRating = (updateRating) => {
+        setRating(updateRating)
+    }
+
 
     return (
         <div class=".bg_image">
@@ -176,18 +181,19 @@ function MovieDetailPage(props) {
 
             <div>
                     <h3 className="rating-white">Give ratings</h3>
-                   <MovieRating postId={movieId} UserData={localStorage.getItem('userId')}/>   
+                   <MovieRating postId={movieId} UserData={localStorage.getItem('userId')} Rating={Rating} refreshFunction={updateRating}/>   
             </div>
 
             <Button
-                    variant="contained"
-                    startIcon={<YouTubeIcon />}
-                    color="secondary"
+                    type="primary"
+                    icon={<YouTubeIcon />}
+                    color="white"
                     target="__blank"
                     href={`https://www.youtube.com/watch?v=${video}`}
                   >
-                   WATCH THE CLIP
+                  &nbsp; WATCH THE CLIP
                   </Button>
+                  {/* <Button type="danger"onClick={onClickFavorite} > {!Favorited ? "Add to Favorites" : "Remove from favorites"} {FavoriteNumber}</Button> */}
                   
                             <div><RecommendedMovies type="Recommended Movies" urlParams={movieId} /></div>
                             :

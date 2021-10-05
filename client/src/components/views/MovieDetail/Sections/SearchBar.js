@@ -31,8 +31,9 @@ const SearchBar = ({ callback }) => {
       
         <input
           type="text"
-          className="small"
-          placeholder={t('SEARCH FOR MOVIE')}
+        
+          className='browse-search w-75'
+          placeholder={t('SEARCH...')}
           onChange={doSearch}
           value={state}
         />

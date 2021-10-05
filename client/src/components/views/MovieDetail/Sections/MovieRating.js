@@ -30,7 +30,7 @@ export default function BasicRating(props) {
             Axios.post('/api/rating/user_rating', variables)
             .then(response => {
                 if (response.data.success) {
-                    props.refreshFunction(response.data.result)
+              
                 } else {
                     alert('Failed to save Comment')
                 }

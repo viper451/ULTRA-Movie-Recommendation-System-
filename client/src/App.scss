@@ -90,35 +90,35 @@ body {
     bottom: 0px;
 }
 
-// .background-custom {
-//     position: absolute;
-//     z-index: -10;
-//     width: 100%;
-//     height: 85%;
-//     top: 0px;
-//     bottom: 0px;
-//     margin: auto;
-//     filter: blur(15px);
-// }
+.background-custom {
+    position: absolute;
+    z-index: -10;
+    width: 100%;
+    height: 85%;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+    filter: blur(15px);
+}
 
-// .background-cover {
-//     position: absolute;
-//     width: 100%;
-//     height: 100%;
-//     top: 0px;
-//     bottom: 0px;
-//     margin: auto;
-//     z-index: -9;
-//     background-color: black;
-// }
+.background-cover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+    z-index: -9;
+    background-color: black;
+}
 
-// .browse-search {
-//     font-size: 24px;
-//     color: $warning;
-//     text-align: center;
-//     border: none;
-//     background-color: $container-color;
-// }
+.browse-search {
+    font-size: 24px;
+    color: $warning;
+    text-align: center;
+    border: none;
+    background-color: $container-color;
+}
 
 // .input-group {
 //     select {

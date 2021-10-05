@@ -175,7 +175,10 @@ function LandingPage() {
 
                 <Title level={2} > <font color="white">Latest movies</font> </Title>
                 <hr />
-                <SearchBar callback={searchMovies} />
+                <div className='container rounded p-3 mb-4 d-flex align-items-center justify-content-around w-100 position-relative'>
+              <div className='browse-search w-75'>
+                <SearchBar callback={searchMovies} /></div>
+                </div>
                 <Divider>Genres</Divider>
                     <div style={{ textAlign: 'center' }}>
                         {genres.map(
