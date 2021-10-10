@@ -19,7 +19,10 @@ const commentSchema = mongoose.Schema({
     review:{
         type: Number,
         default: 0
-    }
+    },
+    moviename: {
+        type: String,
+    },
 
 },
     { timestamps: true })

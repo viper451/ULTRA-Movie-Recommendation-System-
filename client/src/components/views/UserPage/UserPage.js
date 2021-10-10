@@ -219,14 +219,18 @@ function UsersPage() {
                         {Comments && Comments.length > 0 && (
                             <h2 className='text-warning d-flex align-content-center'>
                                 <span>YOUR REVIEWS</span>
-
+                                <span className='badge badge-pill badge-warning ml-3'>
+                                    {Comments.length}
+                                </span>
+                                <br/>
+                                <br/>
                                 <span className='badge badge-pill badge-warning ml-3'>
                                 <br/>
                                 <Fragment>
                                     {Comments.map((comment) => (
                                         <div>
                                             <div>Review: {comment.content}</div>
-                                            <div>Movie: {comment.postId}</div>
+                                            <div>Movie: {comment.moviename}</div>
                                             <br />
                                         </div>
                                         
@@ -286,6 +290,20 @@ function UsersPage() {
                                     return <Review review={rating} />;
                                 })}
                         </div> */}
+                        <span className='badge badge-pill badge-warning ml-3'>
+                         <Fragment>
+                                    {Favorite.map((favourite) => (
+                                        <div>
+                                          
+                                            <div>Movie: {favourite.movieTitle}</div>
+                                            <br />
+                                        </div>
+                                        
+                                        
+                                    ))}
+
+                                </Fragment>
+                                </span>
                     </div>
 
 
@@ -313,6 +331,24 @@ function UsersPage() {
                                     return <Review review={rating} />;
                                 })}
                         </div> */}
+
+{/* <span className='badge badge-pill badge-warning ml-3'>
+                         <Fragment>
+                                    {Likes.map((like) => (
+                                        <div>
+                                          
+                                            <div>Movie: {like.movieTitle}</div>
+                                            <div>Date:   {new Date(
+                                            Likes[0]?.createdAt
+                                        ).toLocaleString()}</div>
+                                            <br />
+                                        </div>
+                                        
+                                        
+                                    ))}
+
+                                </Fragment>
+                                </span> */}
                     </div>
 
 
@@ -343,6 +379,23 @@ function UsersPage() {
                                     return <Review review={rating} />;
                                 })}
                         </div> */}
+                        {/* <span className='badge badge-pill badge-warning ml-3'>
+                         <Fragment>
+                                    {Dislikes.map((dislike) => (
+                                        <div>
+                                          
+                                            <div>Movie: {dislike.movieTitle}</div>
+                                            <div>Date:   {new Date(
+                                            Likes[0]?.createdAt
+                                        ).toLocaleString()}</div>
+                                            <br />
+                                        </div>
+                                        
+                                        
+                                    ))}
+
+                                </Fragment>
+                                </span> */}
                     </div>
 
 

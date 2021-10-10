@@ -42,9 +42,11 @@ function Comments(props) {
             content: Comment,
             writer: user.userData._id,
             postId: props.postId,
-            review:props.review
+            review:props.review,
+            moviename:props.movieTitle,
         }
          console.log(variables)
+         console.log(props)
 
         axios.post('/api/comment/saveComment', variables)
             .then(response => {
@@ -57,7 +59,7 @@ function Comments(props) {
                 }
             })
     }
-
+    {console.log(props.CommentLists)}
     return (
         <div   style={{
             backgroundColor: 'black',
@@ -68,14 +70,14 @@ function Comments(props) {
             <Title level={3} ><font color="white"> Share your opinions about {props.movieTitle}</font> </Title>
             <hr />
             {/* Comment Lists  */}
-            {console.log(props.CommentLists)}
+        
             
             {props.CommentLists && props.CommentLists.map((comment, index) => (
                 (!comment.responseTo &&
                  
                     <React.Fragment>
-                     <SingleComment comment={comment} postId={props.postId} refreshFunction={props.refreshFunction} review={reviewScore} />
-                        <ReplyComment CommentLists={props.CommentLists} postId={props.postId} parentCommentId={comment._id} refreshFunction={props.refreshFunction} />
+                     <SingleComment comment={comment} postId={props.postId} moviename={props.movieTitle} refreshFunction={props.refreshFunction} review={reviewScore} />
+                        <ReplyComment CommentLists={props.CommentLists} moviename={props.movieTitle} postId={props.postId} parentCommentId={comment._id} refreshFunction={props.refreshFunction} />
                     </React.Fragment>
                 )
             ))}

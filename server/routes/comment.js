@@ -7,10 +7,10 @@ const { auth } = require("../middleware/auth");
 router.post("/saveComment", auth, (req, res) => {
     const emptyMessage="NEED TO TYPE SOMETHING "
     const comment = new Comment(req.body)
-    console.log(comment)
+    console.log("COMMENT"+comment)
     if(comment.content!=''){
     comment.save((err, comment) => {
-        console.log(err)
+        // console.log(err)
         if (err) return res.json({ success: false, err })
 
         Comment.find({ '_id': comment._id })
@@ -38,7 +38,7 @@ router.post("/getComments", (req, res) => {
 
 
 router.post("/numComments", (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     Comment.find({ 'writer': req.body.userFrom })
         .exec((err, comments) => {
             if (err) return res.status(400).send(err);

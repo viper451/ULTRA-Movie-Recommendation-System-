@@ -18,7 +18,7 @@ function SingleComment(props) {
     const openReply = () => {
         setOpenReply(!OpenReply)
     }
-
+console.log(props)
     const onSubmit = (e) => {
         e.preventDefault();
 
@@ -26,9 +26,10 @@ function SingleComment(props) {
             writer: user.userData._id,
             postId: props.postId,
             responseTo: props.comment._id,
-            content: CommentValue
+            content: CommentValue,
+            moviename:props.movieTitle
         }
-
+                 console.log(variables)
 
         Axios.post('/api/comment/saveComment', variables)
             .then(response => {

@@ -25,7 +25,7 @@ export default function BasicRating(props) {
                 rating: newValue
             }
 
-            console.log(variables)
+            // console.log(variables)
 
             Axios.post('/api/rating/user_rating', variables)
             .then(response => {

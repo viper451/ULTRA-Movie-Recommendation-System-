@@ -12,6 +12,9 @@ const ratingSchema = mongoose.Schema({
     postId: {
         type: String,
     },
+    moviename: {
+        type: String,
+    },
 })
 
 const Rating = mongoose.model('Rating', ratingSchema)
