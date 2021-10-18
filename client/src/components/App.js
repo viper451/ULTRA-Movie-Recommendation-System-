@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { Route, Switch } from "react-router-dom";
 import Auth from "../hoc/auth";
-
+import TvDetail from "./views/MovieDetail/TvDetail"
 import LandingPage from "./views/LandingPage/LandingPage.js";
 import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage.js";
@@ -23,6 +23,7 @@ function App() {
           <Route exact path="/movie/:movieId" component={Auth(MovieDetail, null)} />
           <Route exact path="/favorite" component={Auth(FavoritePage, null)} />
           <Route exact path="/users" component={Auth(UsersPage,null)} />
+          {/* <Route exact path="/tvseries" component={Auth(TvDetail,null)} /> */}
         </Switch>
       </div>
    

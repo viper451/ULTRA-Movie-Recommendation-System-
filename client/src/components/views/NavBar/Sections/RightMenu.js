@@ -44,6 +44,7 @@ history.push('/users')
        </Menu> */}
       <Button variant="outline-dark"><a href="/login"><font color="white">SIGN IN</font></a></Button>
       <Button variant="outline-dark"><a href="/register"><font color="white">REGISTER</font></a></Button>
+      {/* <Button variant="outline-dark"><a Href="/tvseries"><font color="white">TV SERIES</font></a></Button> */}
       </div>
     )
    

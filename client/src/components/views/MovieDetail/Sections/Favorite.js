@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { Button } from 'antd';
 import { useSelector } from 'react-redux';
-
+import { MDBBadge } from 'mdb-react-ui-kit';
 function Favorite(props) {
     const user = useSelector(state => state.user)
 
@@ -79,7 +79,18 @@ function Favorite(props) {
 
     return (
         <>
-            <Button type="danger"onClick={onClickFavorite} > {!Favorited ? "Add to Favorites" : "Remove from favorites"} {FavoriteNumber}</Button>
+            <div id="wrapper">
+                <div id="inner1">
+            <Button type="danger"onClick={onClickFavorite} > {!Favorited ? "Add to Favorites" : "Remove from favorites"}</Button></div>
+            <br/> 
+            <div id="inner2">
+            <h5>  <MDBBadge pill className=' text-dark' color='info'>
+          &nbsp;&nbsp; <b>LIKED BY: {FavoriteNumber}</b> &nbsp;&nbsp;
+      </MDBBadge></h5>
+  </div>
+    {/* <div id="inner1">This is inner div 1</div>
+    <div id="inner2">This is inner div 2</div> */}
+</div>
         </>
     )
 }

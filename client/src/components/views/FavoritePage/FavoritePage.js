@@ -77,7 +77,7 @@ function FavoritePage(props) {
 
     return (
         <div style={{ width: '85%', margin: '3rem auto' }}>
-            <Title level={2} > MY WATCHLIST </Title>
+            <Title level={2} > MY FAVOURITES </Title>
             <hr />
             {user.userData && !user.userData.isAuth ?
                 <div style={{ width: '100%', fontSize: '2rem', height: '500px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>

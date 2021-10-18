@@ -6,7 +6,9 @@ import { MDBBadge } from 'mdb-react-ui-kit';
 import { Card, Avatar, Col, Row, Typography } from 'antd';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import Button from "react-bootstrap/Button";
 import GridCards from '../../commons/GridCards';
+import "./UserPage.css";
 const { Title } = Typography;
 const { Meta } = Card;
 
@@ -24,7 +26,11 @@ function UsersPage() {
     const [UserList, setUserList] = useState([])
     const [Loading, setLoading] = useState(true)
     const history = useHistory();
- 
+    const reviewmovie=(postId)=>{
+        history.push(`/movie/${postId}`)
+        
+          }
+        
     useEffect(() => {
         fetchUserProfile()
         fetchFavoredMovie()
@@ -140,10 +146,7 @@ function UsersPage() {
     //     </Col>
     // })
     
-    const ucomments=Comments.map((user, index)=>{
  
-      <div>{user[index]?.content}</div>
-    });
 //  console.log(Comments[0]?.content)
      return (
         <CSSTransition
@@ -163,7 +166,7 @@ function UsersPage() {
               
                     <div className='container rounded p-4 mt-4 text-white'>
                         <div className='d-flex flex-column w-30 justify-content-between mr-4'>
-                            <div className='d-flex m-1'>
+                            <div className='d-flex m-1'  style={{ marginLeft: '.5rem' }}>
                                 <h4 className='w-20 m-0'>
                                     <span className='badge badge-primary mr-3'>
                                     <MDBBadge pill className=' text-light' color='primary'>
@@ -174,6 +177,13 @@ function UsersPage() {
                                 <h3 className='m-0'>
                                     
                                 <font color="white">:</font> &nbsp; &nbsp;&nbsp; &nbsp; <font color="white">{Users[0]?.name}</font></h3>
+                                <div> 
+
+
+                                    
+                                </div>
+                                
+                         
                             </div>
                             <div className='d-flex m-1'>
                                 <h4 className='w-20 m-0'>
@@ -215,31 +225,50 @@ function UsersPage() {
                             </div>
                         </div>
                     </div>
-                    <div className='container bg-transparent d-flex flex-column align-items-center mt-4 p-0'>
+                    <div>
+                    <h2 className='text-warning d-flex align-content-center'>
+                                <span style={{padding:'20px'}}>YOUR REVIEWS</span>
+                           
+                                <span style={{padding:'20px'}} className='badge badge-pill badge-warning ml-3'>
+                                  <b>  {Comments.length}</b>
+                                </span></h2>
+                        
                         {Comments && Comments.length > 0 && (
-                            <h2 className='text-warning d-flex align-content-center'>
-                                <span>YOUR REVIEWS</span>
-                                <span className='badge badge-pill badge-warning ml-3'>
+                        
+                            <h6>
+                                {/* <span style={{padding:'20px'}}>YOUR REVIEWS</span>
+                           
+                                <span style={{padding:'20px'}} className='badge badge-pill badge-warning ml-3'>
                                     {Comments.length}
-                                </span>
+                                </span> */}
                                 <br/>
                                 <br/>
                                 <span className='badge badge-pill badge-warning ml-3'>
                                 <br/>
-                                <Fragment>
+                                {/* <Button variant="outline-dark"><a onClick={logoutHandler}><font color="white">LOG OUT</font></a></Button> */}
+                             
                                     {Comments.map((comment) => (
-                                        <div>
-                                            <div>Review: {comment.content}</div>
-                                            <div>Movie: {comment.moviename}</div>
-                                            <br />
-                                        </div>
+                                     
+                                     <div>
+                                     {/* <div id="inner1">This is inner div 1</div>
+                                     <div id="inner2">This is inner div 2</div> */}
+                                
+                                        <Button variant="outline-dark" style={{width: 'max-content',margin:'3px',padding:'30px'}}  onClick={() => reviewmovie(comment.postId)}>
+                                            <div style={{width:'100%',margin:'3px'}}><font color="white">Movie: {comment.moviename}</font></div>
+                                            <div style={{width:'100%',margin:'3px'}}><font color="white">Review: {comment.content}</font></div>
+                                            <div style={{width:'100%',margin:'3px'}}><font color="white">Date and Time: {new Date(
+                                            comment.createdAt
+                                        ).toLocaleString()}</font></div>
+                                 
+                                         
+                                                                                </Button>
                                         
-                                        
+                                                                                </div>
                                     ))}
-
-                                </Fragment>
+                                 
+                              
                                 </span>
-                            </h2>
+                            </h6>
                         )}
                         <br />
                         {/* <div className='w-100'>
@@ -273,9 +302,9 @@ function UsersPage() {
                     </div> */}
 
 {/* COMMENTS GIVEN */}
-<div className='container bg-transparent d-flex flex-column align-items-center mt-4 p-0'>
+<div className='container bg-transparent d-flex flex-column align-items-left  p-0'>
                         {Favorite && Favorite.length > 0 && (
-                            <h2 className='text-warning d-flex align-content-center'>
+                            <h2 className='text-warning d-flex align-content-left'>
                                 <span>YOUR FAVORITES</span>
 
                                 <span className='badge badge-pill badge-warning ml-3'>
@@ -294,8 +323,28 @@ function UsersPage() {
                          <Fragment>
                                     {Favorite.map((favourite) => (
                                         <div>
+
+<div>
+                                     {/* <div id="inner1">This is inner div 1</div>
+                                     <div id="inner2">This is inner div 2</div> */}
+                                
+                                        <Button variant="outline-dark" style={{width: 'max-content',margin:'3px',padding:'30px'}}  onClick={() => reviewmovie(favourite.movieId)}>
+                                            <div style={{width:'100%',margin:'3px'}}><font color="white">Movie: {favourite.movieTitle}</font></div>
+                                            <div style={{width:'100%',margin:'3px'}}><font color="white">Runtime: {favourite.movieRunTime} minutes</font></div>
+                                            <div style={{width:'100%',margin:'3px'}}><font color="white">Date and Time: {new Date(
+                                            favourite.createdAt
+                                        ).toLocaleString()}</font></div>
+                                 
+                                         
+                                                                                </Button>
+                                        
+                                                                                </div>
+
+
+
+
                                           
-                                            <div>Movie: {favourite.movieTitle}</div>
+                                            {/* <div>Movie: {favourite.movieTitle}</div> */}
                                             <br />
                                         </div>
                                         
@@ -325,30 +374,7 @@ function UsersPage() {
                             </h2>
                         )}
                         <br />
-                        {/* <div className='w-100'>
-                            {reviews &&
-                                reviews.map(function (rating, i) {
-                                    return <Review review={rating} />;
-                                })}
-                        </div> */}
-
-{/* <span className='badge badge-pill badge-warning ml-3'>
-                         <Fragment>
-                                    {Likes.map((like) => (
-                                        <div>
-                                          
-                                            <div>Movie: {like.movieTitle}</div>
-                                            <div>Date:   {new Date(
-                                            Likes[0]?.createdAt
-                                        ).toLocaleString()}</div>
-                                            <br />
-                                        </div>
-                                        
-                                        
-                                    ))}
-
-                                </Fragment>
-                                </span> */}
+                     
                     </div>
 
 
@@ -373,29 +399,7 @@ function UsersPage() {
                             </h2>
                         )}
                         <br />
-                        {/* <div className='w-100'>
-                            {reviews &&
-                                reviews.map(function (rating, i) {
-                                    return <Review review={rating} />;
-                                })}
-                        </div> */}
-                        {/* <span className='badge badge-pill badge-warning ml-3'>
-                         <Fragment>
-                                    {Dislikes.map((dislike) => (
-                                        <div>
-                                          
-                                            <div>Movie: {dislike.movieTitle}</div>
-                                            <div>Date:   {new Date(
-                                            Likes[0]?.createdAt
-                                        ).toLocaleString()}</div>
-                                            <br />
-                                        </div>
-                                        
-                                        
-                                    ))}
-
-                                </Fragment>
-                                </span> */}
+                     
                     </div>
 
 

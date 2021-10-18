@@ -11,7 +11,7 @@ function LeftMenu(props) {
 {/*     
   <Button onClick={() => imageClick()}   */}
   <Link to={'/favorite'}>
-  <Button variant="warning">WATCHLIST</Button>{' '}
+  <Button variant="warning">FAVOURITES</Button>{' '}
 </Link>
         {/* <Button variant="warning"><a href="/favorite">Favorites</a></Button>{' '} */}
   
