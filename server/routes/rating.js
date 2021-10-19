@@ -20,10 +20,9 @@ router.post("/user_rating", auth, (req, res) => {
 })
 
 //get rating
-router.get("/user_rating", auth, async (req, res) => {
+router.get("/user_rating/:writerId/:movieID", auth, async (req, res) => {
     try {
-        const rating = await Rating.find({ user: req.body.id, postId: req.body.postId })
-        console.log(rating)
+        const rating = await Rating.find({ writer: req.params.writerId, postId: req.params.movieID }).exec()
         if(!rating){
             return res.status(400).json({ msg: 'There is no rating for this movie' })
         }
@@ -33,5 +32,4 @@ router.get("/user_rating", auth, async (req, res) => {
         res.status(500).send('Server Error')
     }
 })
-
 module.exports = router;

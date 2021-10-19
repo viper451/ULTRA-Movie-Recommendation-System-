@@ -1,0 +1,9 @@
+.rate:hover{
+
+  background-color: aliceblue;
+}
+.rate{
+  color: antiquewhite;
+  background-color: azure;
+  opacity: 1;
+}
