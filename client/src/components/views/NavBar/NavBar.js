@@ -61,7 +61,7 @@ function NavBar() {
           <Icon type="align-right" />
         </Button>
         <Drawer
-          title="ULTRA 2021"
+          title="ULTRA 2022"
           placement="right"
           className="menu_drawer"
           closable={false}

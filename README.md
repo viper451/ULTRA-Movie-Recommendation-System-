@@ -34,7 +34,7 @@
 
 </a>
 
-<h3 align="center">College project (ULTRA) (2021)</h3>
+<h3 align="center">College project (ULTRA) (2021-2022)</h3>
 
 <p align="center">
 

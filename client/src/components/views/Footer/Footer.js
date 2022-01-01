@@ -77,7 +77,7 @@ function Footer() {
             <SocialIcon />
             ULTRA
           </SocialLogo>
-          <WebsiteRights>ULTRA © 2021</WebsiteRights>
+          <WebsiteRights>ULTRA © 2021-2022</WebsiteRights>
           <SocialIcons>
             <SocialIconLink href='/' target='_blank' aria-label='Facebook'>
               <FaFacebook />
