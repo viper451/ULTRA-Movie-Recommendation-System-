@@ -3,9 +3,10 @@ const app = express();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const config = require("./config/key");
+const path = require("path")
 
 const mongoose = require("mongoose");
-mongoose.connect(config.mongoURI, { useNewUrlParser: true})
+mongoose.connect(process.env.mongoURI, { useNewUrlParser: true})
   .then(() => console.log('MongoDB Connected...'))
   .catch(err => console.log(err));
 
@@ -24,7 +25,7 @@ app.use('/uploads', express.static('uploads'));
 
 // Serve static assets if in production
 // if (process.env.NODE_ENV === "production") {
-
+app.use(express.static(path.join(__dirname, "client", "build")))
 //   // Set static folder
 //   app.use(express.static("client/build"));
 
@@ -35,6 +36,10 @@ app.use('/uploads', express.static('uploads'));
 // }
 
 const port = process.env.PORT || 5000
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 app.listen(port, () => {
   console.log(`Server Running at port ${port}`)
